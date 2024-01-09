@@ -1,0 +1,91 @@
+= Java Preview
+include::_attributes.adoc[]
+
+[#stringtemplate]
+== String Template
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+var name = "Duke";
+var info = STR."My name is \{name}";
+
+System.out.println(info);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+My name is Duke
+----
+
+[#unnamedvars]
+== Unamed Variables
+
+try {
+    final List<String> strings = List.of("1");
+    strings.get(2);
+} catch (Exception _) {
+    System.out.println("ups");
+}
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+ups
+----
+
+[#structuredconcurrency]
+== Structured Concurrency API
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+Random r = new Random();
+      
+try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+    Supplier<Integer> number1  = scope.fork(r::nextInt);
+    Supplier<Integer> number2 = scope.fork(r::nextInt);
+
+    try {
+        scope.join().throwIfFailed();
+        System.out.println(number1.get());
+        System.out.println(number2.get());
+            
+    } catch (ExecutionException | InterruptedException e) {
+        throw new RuntimeException(e);
+    }
+          
+}
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+-1656376899
+1610822880
+----
+
+[#scoped]
+== Scoped Values
+
+Variable is valid with the vlue within the block and the it's destroyed.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+ScopedValue.where(NAME, "Ada").run(() ->
+          System.out.println(NAME.get()));
+      
+ScopedValue.where(NAME, "Aixa").run(() ->
+          System.out.println(NAME.get()));
+
+private static final ScopedValue<String> NAME = ScopedValue.newInstance();
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+Ada
+Aixa
+----

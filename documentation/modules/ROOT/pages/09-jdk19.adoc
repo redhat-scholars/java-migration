@@ -1,0 +1,34 @@
+= Java 19
+include::_attributes.adoc[]
+
+[#locale]
+== Locale static creation
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+final Locale ca = Locale.of("ca", "es");
+System.out.println(ca);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+ca_ES
+----
+
+[#parallelm]
+== Parallel Multiply
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+BigInteger bi = new BigInteger("1000");
+System.out.println(bi.parallelMultiply(new BigInteger("1000")));
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+1000000
+----

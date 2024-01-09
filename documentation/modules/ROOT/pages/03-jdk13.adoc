@@ -1,0 +1,24 @@
+= Java 13
+include::_attributes.adoc[]
+
+[#path]
+== Path
+
+=== Compressed Filesystem
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+Path zipFile = Paths.get("src/main/resources/fs.zip");
+try (FileSystem zipFileSys = FileSystems.newFileSystem(zipFile);) {
+    zipFileSys.getRootDirectories().forEach(dir -> {
+        System.out.println(dir);
+    });
+}
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+.
+----

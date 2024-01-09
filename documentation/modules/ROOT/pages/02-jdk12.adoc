@@ -1,0 +1,113 @@
+= Java 12
+include::_attributes.adoc[]
+
+[#string]
+== String methods
+
+=== Indentation
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+String message = "Hello World";
+
+System.out.println(message);
+
+System.out.println(message.indent(4));
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+Hello World
+    Hello World
+----
+
+=== Transforming
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+System.out.println(message.transform(String::toUpperCase));
+System.out.println("my name is %s and I am %d years old".formatted("Alex", 42));
+
+String msg = "Hello \\nWorld";
+System.out.println(msg);
+System.out.println(msg.translateEscapes());
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+my name is Alex and I am 42 years old
+HELLO WORLD
+Hello \nWorld
+Hello 
+World
+----
+
+[#path]
+== Path
+
+=== Comparision
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+Path path1 = Paths.get("src/main/resources/a.txt");
+Path path2 = Paths.get("src/main/resources/b.txt");
+
+System.out.println(Files.mismatch(path1, path1) == -1 ? "Equal": "Not Equal");
+System.out.println(Files.mismatch(path1, path2) + " is the first different char");
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+Equal
+6 is the first different char
+----
+
+[#number]
+== Number Format
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+NumberFormat shortN = NumberFormat.getCompactNumberInstance(Locale.US, NumberFormat.Style.SHORT);
+NumberFormat longN = NumberFormat.getCompactNumberInstance(Locale.US, NumberFormat.Style.LONG);
+
+System.out.println("      628,969 short -> " + shortN.format(628_969));
+System.out.println("      628,969 short -> " + longN.format(628_969));
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+628,969 short -> 629K
+628,969 short -> 629 thousand
+----
+
+[#streams]
+== Streams
+
+=== Teeing
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+List<Stock> result = List.of(s1, s2, s3, s4).stream().collect(
+      Collectors.teeing(
+        Collectors.maxBy(Comparator.comparing(Stock::value)),
+        Collectors.minBy(Comparator.comparing(Stock::value)),
+        (e1, e2) -> List.of(e1.get(), e2.get())
+      ));
+
+System.out.println(result);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+[Stock[name=C, value=125], Stock[name=D, value=1]]
+----

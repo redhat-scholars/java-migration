@@ -1,0 +1,67 @@
+= Java 15
+include::_attributes.adoc[]
+
+[#textblocks]
+== Text Blocks
+
+=== Text Blocks
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+String msg = """
+        {
+            "name": Alex,
+            "age": 42
+        }
+        """;
+
+System.out.println(msg);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+{
+    "name": Alex,
+    "age": 42
+}
+----
+
+=== Escape Chars
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+String msg2 = """
+        single \
+        line \
+        always""";
+
+System.out.println(msg2);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+single line always
+----
+
+[#null]
+== Null Pointer 
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+List<String> elements = new ArrayList<>();
+elements.add(null);
+
+System.out.println(elements.get(0).toLowerCase());
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String.toLowerCase()" because the return value of "java.util.List.get(int)" is null
+        at org.acme.Api.main(Api.java:88)
+----

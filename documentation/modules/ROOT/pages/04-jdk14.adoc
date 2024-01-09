@@ -1,0 +1,122 @@
+= Java 14
+include::_attributes.adoc[]
+
+[#datetime]
+== Date Time Formatter
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+LocalDateTime ldt = LocalDateTime.of(2012, 12, 5, 23, 11, 0);
+
+System.out.println(DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy, h:mm B", Locale.US).format(ldt));
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+Wednesday, December 5, 2012, 11:11 at night
+----
+
+[#switch]
+== Switch Expression
+
+=== Switch with No Break
+
+The new way doesn't require a `break`. 
+It just execute the cause without fall through.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+int counter = 3;
+
+switch (counter) {
+    case 0 -> System.out.println("Not too much");
+    case 1 -> System.out.println("Not too much");
+    case 2 -> System.out.println("Not too much");
+    case 3 -> System.out.println("It's ok");
+    case 4 -> System.out.println("It's ok");
+    case 5 -> System.out.println("It's ok");
+    case 6 -> System.out.println("Too much");
+    case 7 -> System.out.println("Too much");
+    case 8 -> System.out.println("Too much");
+}
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+It s ok
+----
+
+=== Yield
+
+Switch can return a result directly and assign to a variable directly.
+In case of setting a code block in the `case` expression, use the `yield` keyboard to set the result.
+
+When using `switch` with a return value, `default` clause is mandatory to avoid a compilation error.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+ String result = switch (counter) {
+    case 0 -> "Not too much";
+    case 1 -> "Not too much";
+    case 2 -> "Not too much";
+    case 3 -> "It's ok";
+    case 4 -> "It's ok";
+    case 5 -> "It's ok";
+    case 6 -> "Too much";
+    case 7 -> "Too much";
+    case 8 -> "Too much";
+    case 9 -> {
+        System.out.println("Fantastic");
+        yield "Great";
+    }
+    default -> "Don't know";
+};
+
+System.out.println(result);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+It s ok
+----
+
+=== Enums
+
+In the case of an `Enum`, no default is required if you cover all cases.
+
+Given the following enum:
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+public enum Numbers {
+    ONE, TWO, THREE
+}
+----
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+Numbers one = Numbers.ONE;
+
+String result2 = switch(one) {
+    case ONE -> "one";
+    case TWO -> "two";
+    case THREE -> "three";
+    // no default
+};
+
+System.out.println(result2);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+one
+----

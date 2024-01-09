@@ -1,7 +1,57 @@
 * xref:01-setup.adoc[1. Setup]
 ** xref:01-setup.adoc#prerequisite[Prerequisites]
-** xref:01-setup.adoc#minikube[Setup Minikube]
 
-* xref:02-deploy.adoc[2. Deploy Service]
-** xref:02-deploy.adoc#package[Build Service]
-** xref:02-deploy.adoc#deploy[Deploy Dervice]
+* xref:02-jdk12.adoc[2. Java 12]
+** xref:02-jdk12.adoc#strings[Strings]
+** xref:02-jdk12.adoc#path[Path]
+** xref:02-jdk12.adoc#number[Number Format]
+** xref:02-jdk12.adoc#streams[Streams]
+
+* xref:03-jdk13.adoc[3. Java 13]
+** xref:03-jdk13.adoc#path[Path]
+
+* xref:04-jdk14.adoc[4. Java 14]
+** xref:04-jdk14.adoc#datetime[Date Time Formatter]
+** xref:04-jdk14.adoc#switch[Switch]
+
+* xref:05-jdk15.adoc[5. Java 15]
+** xref:05-jdk15.adoc#textblocks
+[Text Blocks]
+** xref:05-jdk15.adoc#null[Null Pointer Information]
+
+* xref:06-jdk16.adoc[6. Java 16]
+** xref:06-jdk16.adoc#streams
+[Streams List shortcut]
+** xref:06-jdk16.adoc#records[Records]
+
+* xref:07-jdk17.adoc[7. Java 17]
+** xref:07-jdk17.adoc#sealed
+[Sealed Classes]
+** xref:07-jdk17.adoc#instantsource[Instant Source]
+** xref:07-jdk17.adoc#random[Random class]
+
+* xref:08-jdk18.adoc[8. Java 18]
+** xref:08-jdk18.adoc#divideexact
+[Divide Exact]
+** xref:08-jdk18.adoc#defaultcharset[Default Charset]
+** xref:08-jdk18.adoc#javadoc[Javadoc Snippet]
+
+* xref:09-jdk19.adoc[9. Java 19]
+** xref:09-jdk19.adoc#locale
+[Locale Creation]
+** xref:09-jdk19.adoc#parallelm[Parallel Multiply]
+
+* xref:11-jdk21.adoc[10. Java 21]
+** xref:11-jdk21.adoc#repeat
+[StringBuilder Repeat]
+** xref:11-jdk21.adoc#patternmatching[Pattern Matching]
+** xref:11-jdk21.adoc#switch[Switch Expression]
+** xref:11-jdk21.adoc#virtualthreads[Virtual Threads]
+** xref:11-jdk21.adoc#kem[Key Encapsulation Mechanism]
+
+* xref:98-preview.adoc[11. Java Preview]
+** xref:98-preview.adoc#stringtemplate
+[String Template]
+** xref:98-preview#unnamedvars[Unamed Variables]
+** xref:98-preview#structuredconcurrency[Structured Concurrency API]
+** xref:98-preview#scoped[Scoped Values]

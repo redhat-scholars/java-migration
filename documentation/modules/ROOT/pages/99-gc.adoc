@@ -1,0 +1,75 @@
+= GC Flags
+include::_attributes.adoc[]
+
+The JVM comes with a long list of importsant flags.
+In this section, we'll see some important flags useful when a Java application is containerized.
+
+[#memory]
+== Memory Flags
+
+One of the important flags in any Java application is the amount of heap memory given to the Java Virtual Machine.
+If it's not set, then the Java will relay on some defaults.
+
+=== Default Values
+
+When not setting any memory value, Java 17 will take approcimatly the 25% of the available container memory as heap.
+
+Run the following command against a container runtime (docker, podman , ...) to validate this default behaviour:
+
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+docker run -m 1GB openjdk:17 java -XshowSettings:vm -version
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+VM settings:
+    Max. Heap Size (Estimated): 247.50M
+    Using VM: OpenJDK 64-Bit Server VM
+
+openjdk version "17.0.2" 2022-01-18
+OpenJDK Runtime Environment (build 17.0.2+8-86)
+OpenJDK 64-Bit Server VM (build 17.0.2+8-86, mixed mode, sharing)
+----
+
+=== Absolute Value
+
+There is the `Xmx` flag used to specify an absolute heap memory value. 
+Let's set the max heap memory value to 300MB.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+docker run -m 1GB openjdk:17 java -Xmx300m -XshowSettings:vm -version
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+VM settings:
+    Max. Heap Size: 300.00M
+    Using VM: OpenJDK 64-Bit Server VM
+
+openjdk version "17.0.2" 2022-01-18
+OpenJDK Runtime Environment (build 17.0.2+8-86)
+OpenJDK 64-Bit Server VM (build 17.0.2+8-86, mixed mode, sharing)
+----
+
+See that one of the big disasvantage of this method is that you can set a limit bigger than the maximum available container memory.
+
+=== Relative Value
+
+To solve the previous problem, there is the `MaxRAMPercentage` flag used to set a percentage of the available memory that can be used 
+
+docker run -m 1GB openjdk:17 java -XX:MaxRAMPercentage=70 -XshowSettings:vm -version
+
+VM settings:
+    Max. Heap Size (Estimated): 694.12M
+    Using VM: OpenJDK 64-Bit Server VM
+
+openjdk version "17.0.2" 2022-01-18
+OpenJDK Runtime Environment (build 17.0.2+8-86)
+OpenJDK 64-Bit Server VM (build 17.0.2+8-86, mixed mode, sharing)

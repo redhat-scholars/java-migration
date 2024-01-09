@@ -2,9 +2,9 @@ runtime:
   cache_dir: ./.cache/antora
 
 site:
-  title: Template Tutorial
-  url: https://redhat-scholars.github.io/course-template
-  start_page: template-tutorial::index.adoc
+  title: Java Migration Tutorial
+  url: https://github.com/redhat-scholars/java-migration
+  start_page: java-migration-tutorial::index.adoc
 
 content:
   sources:

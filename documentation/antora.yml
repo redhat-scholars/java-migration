@@ -1,5 +1,5 @@
-name: template-tutorial
-title: Template Tutorial
+name: java-migration-tutorial
+title: Java Migration Tutorial
 version: master
 nav:
   - modules/ROOT/nav.adoc

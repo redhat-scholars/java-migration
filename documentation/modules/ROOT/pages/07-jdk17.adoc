@@ -1,0 +1,113 @@
+= Java 17
+include::_attributes.adoc[]
+
+[#sealed]
+== Sealed Classes
+
+A way to put organization domain concepts into code.
+
+With Sealed classes you define who can extend them using `sealed` to define the list of classes that can extends the current class, and `non-sealed` to permit extend any child class from a parent sealed class.
+
+=== Sealed inheritance
+
+Let's create a parent abstract class named `Animal`.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+package org.acme;
+
+public abstract class Animal {
+    
+}
+----
+
+Then create the first sub-class of `Animal` named `Reptile` sealed to `Lizard` and `Turtle` wihch means that only `Lizard` and `Turtle` classes can extend `Reptile` class.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+package org.acme;
+
+public abstract sealed class Reptile permits Lizard, Turtle {
+    
+}
+----
+
+The `Lizard` class is a `final` class, there cannot be inheritance from `Lizard`:
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+package org.acme;
+
+public final class Lizard extends Reptile {
+
+}
+----
+
+The `Turtle` class is a none sealed class which means that it's not closed and you can extend it with no restrictions.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+package org.acme;
+
+public non-sealed class Turtle extends Reptile {
+    
+}
+----
+
+=== Inner Sealed Classes
+
+When you define an inner class and extending from the outter a sealed class, then `permits` is not necessary as it's implecitly set.
+
+Create an `Amphibian` class containing an inner class:
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+package org.acme;
+
+public sealed class Amphibian {
+    public final class Frog extends Amphibian {
+        
+    }
+}
+----
+
+[#instantsource]
+== Instant Source [JDK 17]
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+final InstantSource system = InstantSource.system();
+System.out.println(system.millis());
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+
+----
+
+[#random]
+== Random [JDK 17]
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+RandomGenerator randomGenerator = new Random();
+RandomGenerator randomGenerator2 = RandomGenerator.of("L128X256MixRandom");
+        
+System.out.println(randomGenerator.nextInt(10));
+System.out.println(randomGenerator2.nextInt(10));
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+3
+6
+----

@@ -1,0 +1,59 @@
+= Java 16
+include::_attributes.adoc[]
+
+[#streams]
+== Streams
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+List<String> newList = Stream.of("foo", "bar", "baz").toList();
+System.out.println(newList);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+[foo, bar, baz]
+----
+
+[#records]
+== Records
+
+Records are immutable classes extending automatically from `java.land.Record`.
+
+Records are:
+
+* Immutable
+* All fields are final
+* Creates parametrized constructor
+* Getters/equals/toString
+* You can override them
+
+Create a new file named `Developer.java` in the same package as the `main` class:
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+package org.acme;
+
+public record Developer(String name, int age) {   
+}
+----
+
+The record has two fields `name` and `age`, and you can use it as any other Java class:
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+var developers = Stream.of(new Developer("Alex", 42), new Developer("Ada", 10));
+developers.forEach(System.out::println);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+Developer[name=Alex, age=42]
+Developer[name=Ada, age=10]
+----
+

@@ -1,0 +1,166 @@
+= Java 21
+include::_attributes.adoc[]
+
+[#repeat]
+== Repeat
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+StringBuilder sb = new StringBuilder();
+sb.append("Hello").repeat(" world", 5);
+System.out.println(sb.toString());
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+Hello world world world world world
+----
+
+[#math]
+== Math Clamp
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+System.out.println(Math.clamp(23, 25, 30));
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+25
+----
+
+[#patternmatching]
+== Pattern Matching for Instaceof 
+
+With the new `instanceof` operation, you can validate type and cast to type with just one line:
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+Object numberObject = Integer.parseInt("1");
+
+if (numberObject instanceof Integer i) {
+    System.out.println(i.intValue());
+}
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+1
+----
+
+Also it is supported by records:
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+var developer = new Developer("Alexandra", 8);
+if (developer instanceof Developer(String name, int age)) {
+    System.out.println(name + " " + age);
+}
+----
+
+[#switch]
+== Switch Expression
+
+=== Pattern Matching with Switch
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+switch (dev) {
+    case Developer d -> System.out.println("I am a developer");
+    default -> System.out.println("I don't know");
+}
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+I m a developer
+----
+
+=== Type and Guarded Patterns
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+Object price = 1000;
+
+String description = switch (price) {
+    case Integer i when i > 900 -> "This is a big number " + i.toString();
+    case Integer i -> "This is a normal number " + i.toString();
+    case Long l -> "A long number " + l.toString();
+    default -> price.toString();
+};
+
+System.out.println(description);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+This is a big number 1000
+----
+
+[#virtualthreads]
+== Virtual Threads
+
+From Java documentation:
+
+_A virtual thread still runs code on an OS thread. However, when code running in a virtual thread calls a blocking I/O operation, the Java runtime suspends the virtual thread until it can be resumed. The OS thread associated with the suspended virtual thread is now free to perform operations for other virtual threads._
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+    IntStream.range(0, 10).forEach(i -> {
+    executor.submit(() -> {
+        System.out.println(STR."\{i}");
+        });
+    });
+}
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+3
+4
+1
+...
+----
+
+[#kem]
+== Key Encapsulation Mechanism [JDK 21]
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+var kpg = KeyPairGenerator.getInstance("X25519");
+var kp = kpg.generateKeyPair();
+
+      // Sender 
+var kem1 = KEM.getInstance("DHKEM");
+var sender = kem1.newEncapsulator(kp.getPublic());
+var encapsulated = sender.encapsulate();
+var k1 = encapsulated.key();
+
+      // Receiver 
+var kem2 = KEM.getInstance("DHKEM");
+var receiver = kem2.newDecapsulator(kp.getPrivate());
+var k2 = receiver.decapsulate(encapsulated.encapsulation());
+
+System.out.println(k2.equals(k1));
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+true
+----

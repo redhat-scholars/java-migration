@@ -1,0 +1,71 @@
+= Java 19
+include::_attributes.adoc[]
+
+[#divideexact]
+== Divide Exact
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+System.out.println(Integer.MIN_VALUE/-1);
+try {
+    System.out.println(Math.divideExact(Integer.MIN_VALUE, -1));
+} catch(ArithmeticException e) {
+    System.out.println("Overflow");
+}
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+-2147483648
+Overflow
+----
+
+[#defaultcharset]
+== Default Charset
+
+Java APIs that depend on the default charset will use UTF-8 by default.
+
+[#javadoc]
+== Snippet Javadoc
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+/**
+ * The following code shows how to use {@code Optional.isPresent}:
+ * {@snippet :
+ * if (v.isPresent()) {
+ *     System.out.println("v: " + v.get());
+ * }
+ * }
+ */
+public void myMethod() {
+  // ...
+}
+----
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+/**
+ * The following code shows how to use {@code Optional.isPresent}:
+ * {@snippet file="ShowOptional.java" region="example"}
+ */
+----
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+.ShowOptional.java
+----
+public class ShowOptional {
+    void show(Optional<String> v) {
+        // @start region="example"
+        if (v.isPresent()) {
+            System.out.println("v: " + v.get());
+        }
+        // @end
+    }
+}
+----

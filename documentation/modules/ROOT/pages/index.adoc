@@ -1,20 +1,63 @@
-= Welcome to Template Tutorial
+= Welcome to Java Migration Tutorial
 :page-layout: home
 :!sectids:
 
 [.text-center.strong]
-== Publish Services to Kubernetes
+== Java Migration
 
-A Kubernetes tutorial to show how you can deploy a Java service to a Kubernetes cluster as it was a child game.
+In this tutorial we'll learn some of the most important additions between Java 11 LTS and the latest Java LTS (currently Java 21).
+
+We'll cover API modifications to existing classes (String, Formatters, ...), new language features (text blocks, switch enhacement, ...), and GC/JVM for containerizing applications (flags, new algorithms).
+
 
 [.tiles.browse]
 == Browse modules
 
 [.tile]
 .xref:01-setup.adoc[Get Started]
-* xref:01-setup.adoc#minikube[Minikube]
+* xref:01-setup.adoc#prerequisite[PreRequisite]
+* xref:01-setup.adoc#downloadtutorial[Sources]
 
 [.tile]
-.xref:02-deploy.adoc[Deploying]
-* xref:02-deploy.adoc#package[Package the Application]
-* xref:02-deploy.adoc#deploy[Deploy the Application]
+.xref:02-jdk12.adoc[Java 12]
+* xref:02-jdk12.adoc[What's New in Java 12]
+
+[.tile]
+.xref:03-jdk13.adoc[Java 13]
+* xref:03-jdk13.adoc[What's New in Java 13]
+
+[.tile]
+.xref:04-jdk14.adoc[Java 14]
+* xref:04-jdk12.adoc[What's New in Java 14]
+
+[.tile]
+.xref:05-jdk15.adoc[Java 15]
+* xref:05-jdk15.adoc[What's New in Java 15]
+
+[.tile]
+.xref:06-jdk16.adoc[Java 16]
+* xref:06-jdk16.adoc[What's New in Java 16]
+
+[.tile]
+.xref:07-jdk17.adoc[Java 17]
+* xref:07-jdk17.adoc[What's New in Java 17]
+
+[.tile]
+.xref:08-jdk18.adoc[Java 18]
+* xref:08-jdk18.adoc[What's New in Java 18]
+
+[.tile]
+.xref:09-jdk19.adoc[Java 19]
+* xref:09-jdk19.adoc[What's New in Java 19]
+
+[.tile]
+.xref:11-jdk21.adoc[Java 21]
+* xref:11-jdk21.adoc[What's New in Java 21]
+
+[.tile]
+.xref:98-preview.adoc[Java Preview]
+* xref:98-preview.adoc[What's in Preview]
+
+[.tile]
+.xref:99-gc.adoc[Garbage Collector Container Flags]
+* xref:99-gc.adoc[Garbage Collector]
