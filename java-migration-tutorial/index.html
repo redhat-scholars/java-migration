@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Welcome to Java Migration Tutorial :: Java Migration Tutorial</title>
+    <link rel="canonical" href="https://github.com/redhat-scholars/java-migration/java-migration-tutorial/index.html">
+    <link rel="next" href="01-setup.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/NewRHDFullLogo_4-color_white-wordmark.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://github.com/redhat-scholars/java-migration">Java Migration Tutorial</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://developers.redhat.com/ebooks/" target="_blank">Books</a>
+        <a class="navbar-item" href="https://developers.redhat.com/cheatsheets/" target="_blank">Cheat Sheets</a>
+        <a class="navbar-item" href="https://developers.redhat.com/events/" target="_blank">Upcoming Events</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/kubernetes-tutorial/" target="_blank">Kubernetes</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/istio-tutorial/" target="_blank">Istio</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/quarkus-tutorial/" target="_blank">Quarkus</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/knative-tutorial/" target="_blank">Knative</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/tekton-tutorial/" target="_blank">Tekton</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="java-migration-tutorial" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html"></a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="01-setup.html">1. Setup</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-setup.html#prerequisite">Prerequisites</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-jdk12.html">2. Java 12</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-jdk12.html#strings">Strings</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-jdk12.html#path">Path</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-jdk12.html#number">Number Format</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-jdk12.html#streams">Streams</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-jdk13.html">3. Java 13</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-jdk13.html#path">Path</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="04-jdk14.html">4. Java 14</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-jdk14.html#datetime">Date Time Formatter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04-jdk14.html#switch">Switch</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="05-jdk15.html">5. Java 15</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">xref:05-jdk15.adoc#textblocks</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05-jdk15.html#null">Null Pointer Information</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="06-jdk16.html">6. Java 16</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">xref:06-jdk16.adoc#streams</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06-jdk16.html#records">Records</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="07-jdk17.html">7. Java 17</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">xref:07-jdk17.adoc#sealed</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07-jdk17.html#instantsource">Instant Source</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07-jdk17.html#random">Random class</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="08-jdk18.html">8. Java 18</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">xref:08-jdk18.adoc#divideexact</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08-jdk18.html#defaultcharset">Default Charset</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08-jdk18.html#javadoc">Javadoc Snippet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="09-jdk19.html">9. Java 19</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">xref:09-jdk19.adoc#locale</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09-jdk19.html#parallelm">Parallel Multiply</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="11-jdk21.html">10. Java 21</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">xref:11-jdk21.adoc#repeat</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11-jdk21.html#patternmatching">Pattern Matching</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11-jdk21.html#switch">Switch Expression</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11-jdk21.html#virtualthreads">Virtual Threads</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11-jdk21.html#kem">Key Encapsulation Mechanism</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="98-preview.html">11. Java Preview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">xref:98-preview.adoc#stringtemplate</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="98-preview.html#unnamedvars">Unamed Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="98-preview.html#structuredconcurrency">Structured Concurrency API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="98-preview.html#scoped">Scoped Values</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link is-current"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Java Migration Tutorial</a></li>
+    <li><a href="index.html">Welcome to Java Migration Tutorial</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/java-migration/edit/master/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Welcome to Java Migration Tutorial</h1>
+<div class="sect1 text-center strong">
+<h2>Java Migration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this tutorial we&#8217;ll learn some of the most important additions between Java 11 LTS and the latest Java LTS (currently Java 21).</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll cover API modifications to existing classes (String, Formatters, &#8230;&#8203;), new language features (text blocks, switch enhacement, &#8230;&#8203;), and GC/JVM for containerizing applications (flags, new algorithms).</p>
+</div>
+</div>
+</div>
+<div class="sect1 tiles browse">
+<h2>Browse modules</h2>
+<div class="sectionbody">
+<div class="ulist tile">
+<div class="title"><a href="01-setup.html" class="xref page">Get Started</a></div>
+<ul>
+<li>
+<p><a href="01-setup.html#prerequisite" class="xref page">PreRequisite</a></p>
+</li>
+<li>
+<p><a href="01-setup.html#downloadtutorial" class="xref page">Sources</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist tile">
+<div class="title"><a href="02-jdk12.html" class="xref page">Java 12</a></div>
+<ul>
+<li>
+<p><a href="02-jdk12.html" class="xref page">What&#8217;s New in Java 12</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist tile">
+<div class="title"><a href="03-jdk13.html" class="xref page">Java 13</a></div>
+<ul>
+<li>
+<p><a href="03-jdk13.html" class="xref page">What&#8217;s New in Java 13</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist tile">
+<div class="title"><a href="04-jdk14.html" class="xref page">Java 14</a></div>
+<ul>
+<li>
+<p><a href="#04-jdk12.adoc" class="xref unresolved">What&#8217;s New in Java 14</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist tile">
+<div class="title"><a href="05-jdk15.html" class="xref page">Java 15</a></div>
+<ul>
+<li>
+<p><a href="05-jdk15.html" class="xref page">What&#8217;s New in Java 15</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist tile">
+<div class="title"><a href="06-jdk16.html" class="xref page">Java 16</a></div>
+<ul>
+<li>
+<p><a href="06-jdk16.html" class="xref page">What&#8217;s New in Java 16</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist tile">
+<div class="title"><a href="07-jdk17.html" class="xref page">Java 17</a></div>
+<ul>
+<li>
+<p><a href="07-jdk17.html" class="xref page">What&#8217;s New in Java 17</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist tile">
+<div class="title"><a href="08-jdk18.html" class="xref page">Java 18</a></div>
+<ul>
+<li>
+<p><a href="08-jdk18.html" class="xref page">What&#8217;s New in Java 18</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist tile">
+<div class="title"><a href="09-jdk19.html" class="xref page">Java 19</a></div>
+<ul>
+<li>
+<p><a href="09-jdk19.html" class="xref page">What&#8217;s New in Java 19</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist tile">
+<div class="title"><a href="11-jdk21.html" class="xref page">Java 21</a></div>
+<ul>
+<li>
+<p><a href="11-jdk21.html" class="xref page">What&#8217;s New in Java 21</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist tile">
+<div class="title"><a href="98-preview.html" class="xref page">Java Preview</a></div>
+<ul>
+<li>
+<p><a href="98-preview.html" class="xref page">What&#8217;s in Preview</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist tile">
+<div class="title"><a href="99-gc.html" class="xref page">Garbage Collector Container Flags</a></div>
+<ul>
+<li>
+<p><a href="99-gc.html" class="xref page">Garbage Collector</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="next"><a href="01-setup.html">1. Setup</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
