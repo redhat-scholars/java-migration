@@ -137,7 +137,7 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 ----
 
 [#kem]
-== Key Encapsulation Mechanism [JDK 21]
+== Key Encapsulation Mechanism
 
 [.console-input]
 [source, java,subs="+macros,+attributes"]
