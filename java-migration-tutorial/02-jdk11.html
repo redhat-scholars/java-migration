@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Welcome to Java Migration Tutorial :: Java Migration Tutorial</title>
-    <link rel="canonical" href="https://github.com/redhat-scholars/java-migration/java-migration-tutorial/index.html">
-    <link rel="next" href="01-setup.html">
+    <title>Java 11 :: Java Migration Tutorial</title>
+    <link rel="canonical" href="https://github.com/redhat-scholars/java-migration/java-migration-tutorial/02-jdk11.html">
+    <link rel="prev" href="01-setup.html">
+    <link rel="next" href="02-jdk12.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -59,15 +60,15 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="02-jdk11.html">Java 11</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="02-jdk11.html#strings">String</a>
+    <a class="nav-link" href="#strings">String</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="02-jdk11.html#files">Files</a>
+    <a class="nav-link" href="#files">Files</a>
   </li>
 </ul>
   </li>
@@ -226,143 +227,66 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Java Migration Tutorial</a></li>
-    <li><a href="index.html">Welcome to Java Migration Tutorial</a></li>
+    <li><a href="02-jdk11.html">Java 11</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/java-migration/edit/master/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/java-migration/edit/master/documentation/modules/ROOT/pages/02-jdk11.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Welcome to Java Migration Tutorial</h1>
-<div class="sect1 text-center strong">
-<h2>Java Migration</h2>
+<h1 class="page">Java 11</h1>
+<div class="sect1">
+<h2 id="strings"><a class="anchor" href="#strings"></a>String methods</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>In this tutorial we&#8217;ll learn some of the most important additions between Java 11 LTS and the latest Java LTS (currently Java 21).</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">final var msg = "Hello "
+          + System.lineSeparator()
+          + "    my name is"
+          + System.lineSeparator()
+          + "    "
+          + System.lineSeparator()
+          + "Jimmy";
+
+    final List&lt;String&gt; lines = msg.lines()
+      .filter(s -&gt; !s.isBlank())
+      .map(String::strip)
+      .toList();
+    System.out.println(lines);</code></pre>
 </div>
-<div class="paragraph">
-<p>We&#8217;ll cover API modifications to existing classes (String, Formatters, &#8230;&#8203;), new language features (text blocks, switch enhacement, &#8230;&#8203;), and GC/JVM for containerizing applications (flags, new algorithms).</p>
+</div>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">[Hello, my name is, Jimmy]</code></pre>
 </div>
 </div>
 </div>
-<div class="sect1 tiles browse">
-<h2>Browse modules</h2>
+</div>
+<div class="sect1">
+<h2 id="files"><a class="anchor" href="#files"></a>Files</h2>
 <div class="sectionbody">
-<div class="ulist tile">
-<div class="title"><a href="01-setup.html" class="xref page">Get Started</a></div>
-<ul>
-<li>
-<p><a href="01-setup.html#prerequisite" class="xref page">PreRequisite</a></p>
-</li>
-<li>
-<p><a href="01-setup.html#downloadtutorial" class="xref page">Sources</a></p>
-</li>
-</ul>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">String content = Files.readString(Path.of("src/main/resources/a.txt"));
+    System.out.println(content);
+
+// Same with writeString()</code></pre>
 </div>
-<div class="ulist tile">
-<div class="title"><a href="02-jdk11.html" class="xref page">Java 11</a></div>
-<ul>
-<li>
-<p><a href="02-jdk11.html" class="xref page">What&#8217;s New in Java 11</a></p>
-</li>
-</ul>
 </div>
-<div class="ulist tile">
-<div class="title"><a href="02-jdk12.html" class="xref page">Java 12</a></div>
-<ul>
-<li>
-<p><a href="02-jdk12.html" class="xref page">What&#8217;s New in Java 12</a></p>
-</li>
-</ul>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Hello World</code></pre>
 </div>
-<div class="ulist tile">
-<div class="title"><a href="03-jdk13.html" class="xref page">Java 13</a></div>
-<ul>
-<li>
-<p><a href="03-jdk13.html" class="xref page">What&#8217;s New in Java 13</a></p>
-</li>
-</ul>
-</div>
-<div class="ulist tile">
-<div class="title"><a href="04-jdk14.html" class="xref page">Java 14</a></div>
-<ul>
-<li>
-<p><a href="#04-jdk12.adoc" class="xref unresolved">What&#8217;s New in Java 14</a></p>
-</li>
-</ul>
-</div>
-<div class="ulist tile">
-<div class="title"><a href="05-jdk15.html" class="xref page">Java 15</a></div>
-<ul>
-<li>
-<p><a href="05-jdk15.html" class="xref page">What&#8217;s New in Java 15</a></p>
-</li>
-</ul>
-</div>
-<div class="ulist tile">
-<div class="title"><a href="06-jdk16.html" class="xref page">Java 16</a></div>
-<ul>
-<li>
-<p><a href="06-jdk16.html" class="xref page">What&#8217;s New in Java 16</a></p>
-</li>
-</ul>
-</div>
-<div class="ulist tile">
-<div class="title"><a href="07-jdk17.html" class="xref page">Java 17</a></div>
-<ul>
-<li>
-<p><a href="07-jdk17.html" class="xref page">What&#8217;s New in Java 17</a></p>
-</li>
-</ul>
-</div>
-<div class="ulist tile">
-<div class="title"><a href="08-jdk18.html" class="xref page">Java 18</a></div>
-<ul>
-<li>
-<p><a href="08-jdk18.html" class="xref page">What&#8217;s New in Java 18</a></p>
-</li>
-</ul>
-</div>
-<div class="ulist tile">
-<div class="title"><a href="09-jdk19.html" class="xref page">Java 19</a></div>
-<ul>
-<li>
-<p><a href="09-jdk19.html" class="xref page">What&#8217;s New in Java 19</a></p>
-</li>
-</ul>
-</div>
-<div class="ulist tile">
-<div class="title"><a href="11-jdk21.html" class="xref page">Java 21</a></div>
-<ul>
-<li>
-<p><a href="11-jdk21.html" class="xref page">What&#8217;s New in Java 21</a></p>
-</li>
-</ul>
-</div>
-<div class="ulist tile">
-<div class="title"><a href="98-preview.html" class="xref page">Java Preview</a></div>
-<ul>
-<li>
-<p><a href="98-preview.html" class="xref page">What&#8217;s in Preview</a></p>
-</li>
-</ul>
-</div>
-<div class="ulist tile">
-<div class="title"><a href="99-gc.html" class="xref page">Garbage Collector Container Flags</a></div>
-<ul>
-<li>
-<p><a href="99-gc.html" class="xref page">Garbage Collector</a></p>
-</li>
-</ul>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="next"><a href="01-setup.html">1. Setup</a></span>
+  <span class="prev"><a href="01-setup.html">1. Setup</a></span>
+  <span class="next"><a href="02-jdk12.html">Java 12</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
