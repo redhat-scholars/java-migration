@@ -32,6 +32,26 @@ public class Api {
     String message = "Hello World";
     System.out.println(message);
 
+    // Java 11
+
+      final var msg = "Hello "
+          + System.lineSeparator()
+          + "    my name is"
+          + System.lineSeparator()
+          + "    "
+          + System.lineSeparator()
+          + "Jimmy";
+      
+    final List<String> lines = msg.lines()
+      .filter(s -> !s.isBlank())
+      .map(String::strip)
+      .toList();
+    System.out.println(lines);
+
+    // Java 11
+    
+    String content = Files.readString(Path.of("src/main/resources/a.txt"));
+    System.out.println(content);
     // NEW JAVA 12
 
     // NEW
@@ -63,9 +83,9 @@ public class Api {
 
     System.out.println("my name is %s and I am %d years old".formatted("Alex", 42));
 
-    String msg = "Hello \\nWorld";
-    System.out.println(msg);
-    System.out.println(msg.translateEscapes());
+    String helloWorld = "Hello \\nWorld";
+    System.out.println(helloWorld);
+    System.out.println(helloWorld.translateEscapes());
     // NEW JAVA 14
 
     List<String> collect = Stream.of("foo", "bar", "baz").collect(Collectors.toList());

@@ -19,6 +19,10 @@ We'll cover API modifications to existing classes (String, Formatters, ...), new
 * xref:01-setup.adoc#downloadtutorial[Sources]
 
 [.tile]
+.xref:02-jdk11.adoc[Java 11]
+* xref:02-jdk11.adoc[What's New in Java 11]
+
+[.tile]
 .xref:02-jdk12.adoc[Java 12]
 * xref:02-jdk12.adoc[What's New in Java 12]
 

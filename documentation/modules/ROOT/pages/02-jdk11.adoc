@@ -1,0 +1,47 @@
+= Java 11
+include::_attributes.adoc[]
+
+[#strings]
+== String methods
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+final var msg = "Hello "
+          + System.lineSeparator()
+          + "    my name is"
+          + System.lineSeparator()
+          + "    "
+          + System.lineSeparator()
+          + "Jimmy";
+      
+    final List<String> lines = msg.lines()
+      .filter(s -> !s.isBlank())
+      .map(String::strip)
+      .toList();
+    System.out.println(lines);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+[Hello, my name is, Jimmy]
+----
+
+[#files]
+== Files
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+String content = Files.readString(Path.of("src/main/resources/a.txt"));
+    System.out.println(content);
+
+// Same with writeString()
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+Hello World
+----
