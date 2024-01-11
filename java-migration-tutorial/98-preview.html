@@ -311,13 +311,15 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
 <h2 id="scoped"><a class="anchor" href="#scoped"></a>Scoped Values</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Variable is valid with the vlue within the block and the it&#8217;s destroyed.</p>
+<p>Variable is valid with the value within the block and the it&#8217;s destroyed.</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ScopedValue.where(NAME, "Ada").run) -&gt;           System.out.println(NAME.get();
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ScopedValue.where(NAME, "Ada").run(() -&gt;
+          System.out.println(NAME.get()));
 
-ScopedValue.where(NAME, "Aixa").run) -&gt;           System.out.println(NAME.get();
+ScopedValue.where(NAME, "Aixa").run(() -&gt;
+          System.out.println(NAME.get()));
 
 private static final ScopedValue&lt;String&gt; NAME = ScopedValue.newInstance();</code></pre>
 </div>
