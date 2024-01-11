@@ -73,16 +73,16 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
 [#scoped]
 == Scoped Values
 
-Variable is valid with the vlue within the block and the it's destroyed.
+Variable is valid with the value within the block and the it's destroyed.
 
 [.console-input]
-[source, java,subs="+macros,+attributes,-quotes"]
+[source, java,subs="+macros,+attributes"]
 ----
 ScopedValue.where(NAME, "Ada").run(() ->
-          System.out.println(NAME.get()));
+          +System.out.println(NAME.get()));+
       
 ScopedValue.where(NAME, "Aixa").run(() ->
-          System.out.println(NAME.get()));
+          +System.out.println(NAME.get()));+
 
 private static final ScopedValue<String> NAME = ScopedValue.newInstance();
 ----
