@@ -22,7 +22,7 @@ public abstract class Animal {
 }
 ----
 
-Then create the first sub-class of `Animal` named `Reptile` sealed to `Lizard` and `Turtle` wihch means that only `Lizard` and `Turtle` classes can extend `Reptile` class.
+Then create the first sub-class of `Animal` named `Reptile` sealed to `Lizard` and `Turtle` which means that only `Lizard` and `Turtle` classes can extend `Reptile` class.
 
 [.console-input]
 [source, java,subs="+macros,+attributes"]
@@ -77,7 +77,7 @@ public sealed class Amphibian {
 ----
 
 [#instantsource]
-== Instant Source [JDK 17]
+== Instant Source
 
 [.console-input]
 [source, java,subs="+macros,+attributes"]
@@ -93,7 +93,7 @@ System.out.println(system.millis());
 ----
 
 [#random]
-== Random [JDK 17]
+== Random
 
 [.console-input]
 [source, java,subs="+macros,+attributes"]

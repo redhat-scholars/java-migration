@@ -22,12 +22,16 @@ My name is Duke
 [#unnamedvars]
 == Unamed Variables
 
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
 try {
     final List<String> strings = List.of("1");
     strings.get(2);
 } catch (Exception _) {
     System.out.println("ups");
 }
+----
 
 [.console-output]
 [source, java,subs="+macros,+attributes"]
@@ -72,7 +76,7 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
 Variable is valid with the vlue within the block and the it's destroyed.
 
 [.console-input]
-[source, java,subs="+macros,+attributes"]
+[source, java,subs="+macros,+attributes,-quotes"]
 ----
 ScopedValue.where(NAME, "Ada").run(() ->
           System.out.println(NAME.get()));
