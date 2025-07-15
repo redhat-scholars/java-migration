@@ -1,0 +1,122 @@
+= Java 24
+include::_attributes.adoc[]
+
+[#streamgatherers]
+== Stream Gatherers
+
+Enhances the Stream API to support custom intermediate operations. 
+
+Java provides some gatherers in the `java.util.stream.Gatherers`, such as:
+
+windowFixed:: A fixed window gatherer processes elements in non-overlapping groups of a fixed size.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+public static List<String> titles = Arrays.asList("1", "2", "3", "4", "5", "6","7", "8","9"); 
+
+titles.stream()
+          .gather(Gatherers.windowFixed(3))
+          .forEach(System.out::println);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+[1, 2, 3]
+[4, 5, 6]
+[7, 8, 9]
+----
+
+windowSliding:: A sliding window moves through the elements one at a time.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+titles.stream()
+        .gather(Gatherers.windowSliding(2))
+        .forEach(System.out::println);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+[1, 2]
+[2, 3]
+[3, 4]
+[4, 5]
+[5, 6]
+[6, 7]
+[7, 8]
+[8, 9]
+----
+
+fold:: The fold operation accumulates results in order.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+titles.stream()
+        .gather(Gatherers.fold(
+          () -> "List of numbers: ",
+          (result, num) -> result + num + ", ")) // <1>
+        .forEach(System.out::println);
+----
+<1> Doesn't force any type
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+List of numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+----
+
+scan:: Similar to fold but emits intermediate results.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+titles.stream()
+        .gather(Gatherers.scan(
+          () -> "List of numbers: ",
+          (result, num) -> result + num + ", ")) // <1>
+        .forEach(System.out::println);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+List of numbers: 1, 
+List of numbers: 1, 2, 
+List of numbers: 1, 2, 3, 
+List of numbers: 1, 2, 3, 4, 
+List of numbers: 1, 2, 3, 4, 5, 
+List of numbers: 1, 2, 3, 4, 5, 6, 
+List of numbers: 1, 2, 3, 4, 5, 6, 7, 
+List of numbers: 1, 2, 3, 4, 5, 6, 7, 8, 
+List of numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+----
+
+mapConcurrent:: An operation which executes a function concurrently with a configured level of max concurrency, using virtual threads.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+titles.stream()
+        .gather(Gatherers.mapConcurrent(2,
+           word -> "- " + word
+          )
+        )
+        .forEach(System.out::println);
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+- 1
+- 2
+- 3
+- 4
+- 5
+----
+
+These are the built-in gathers, you can implement custom gatherers using `Gatherer.of` and `Gatherer.ofSequential` methods.

@@ -96,7 +96,8 @@ public class NewF {
         
         // Records
 
-        var developers = Stream.of(new Developer("Alex", 42), new Developer("Ada", 10));
+        var developers = Stream.of(new Developer("Alex", 42), 
+          new Developer("Ada", 10));
         developers.forEach(System.out::println);
 
         var developer = new Developer("Alexandra", 8);
@@ -125,16 +126,16 @@ public class NewF {
       }
 
       var name = "Duke";
-      var info = STR."My name is \{name}";
+      //var info = STR."My name is \{name}";
 
-      System.out.println(info);
+      //System.out.println(info);
 
       // Virtual Threads
       
       try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
         IntStream.range(0, 10).forEach(i -> {
           executor.submit(() -> {
-            System.out.println(STR."\{i}");
+            //System.out.println(STR."\{i}");
           });
         });
       }

@@ -1,6 +1,45 @@
 = Java Preview
 include::_attributes.adoc[]
 
+[#keyderivation]
+== Key Derivation Function API
+
+A Key Derivation Function is a cryptographic algorithm used to generate secure keys from a password.
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+KDF hkdf = KDF.getInstance("HKDF-SHA256");
+AlgorithmParameterSpec params =
+    HKDFParameterSpec.ofExtract()
+        .addIKM("the super secret passphrase".getBytes(StandardCharsets.UTF_8))
+        .addSalt("the salt".getBytes(StandardCharsets.UTF_8))
+        .thenExpand("my derived key description".getBytes(StandardCharsets.UTF_8), 32);
+
+SecretKey key = hkdf.deriveKey("AES", params);
+
+System.out.println("key = " + HexFormat.of().formatHex(key.getEncoded()));
+----
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+key = f2a6084216a7f94309fdc43f07e96d4f75870ab4c3d885249bf3ba49d62e70d7
+----
+
+[#beforesuper]
+== Flexible Constructor Bodies
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+public Person(int age) {
+    if (value <= 0)
+        throw new IllegalArgumentException("non-positive value");
+    super(value);
+}
+----
+
 [#stringtemplate]
 == String Template
 
@@ -19,19 +58,6 @@ System.out.println(info);
 My name is Duke
 ----
 
-[#unnamedvars]
-== Unamed Variables
-
-[.console-input]
-[source, java,subs="+macros,+attributes"]
-----
-try {
-    final List<String> strings = List.of("1");
-    strings.get(2);
-} catch (Exception _) {
-    System.out.println("ups");
-}
-----
 
 [.console-output]
 [source, java,subs="+macros,+attributes"]

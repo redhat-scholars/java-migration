@@ -1,0 +1,17 @@
+= Java 22
+include::_attributes.adoc[]
+
+[#unnamedvars]
+== Unamed Variables
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+try {
+    final List<String> strings = List.of("1");
+    strings.get(2);
+} catch (Exception _) {
+    System.out.println("ups");
+}
+----
+

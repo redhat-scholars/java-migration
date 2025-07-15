@@ -1,0 +1,20 @@
+= Java 23
+include::_attributes.adoc[]
+
+[#durationuntil]
+== Duration Until
+
+[.console-input]
+[source, java,subs="+macros,+attributes"]
+----
+final Instant now = Instant.now();
+final Instant plusSeconds = now.plusSeconds(50);
+System.out.println(now.until(plusSeconds)); // <1>
+----
+<1> Returns a duration
+
+[.console-output]
+[source, java,subs="+macros,+attributes"]
+----
+PT50S
+----
