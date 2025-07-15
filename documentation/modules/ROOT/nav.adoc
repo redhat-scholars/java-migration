@@ -47,8 +47,18 @@
 ** xref:11-jdk21.adoc#virtualthreads[Virtual Threads]
 ** xref:11-jdk21.adoc#kem[Key Encapsulation Mechanism]
 
+* xref:12-jdk22.adoc[Java 22]
+** xref:12-jdk22.adoc#unnamedvars[Unamed Variables]
+
+* xref:13-jdk23.adoc[Java 23]
+** xref:13-jdk23.adoc#durationuntil[Duration Until]
+
+* xref:14-jdk24.adoc[Java 24]
+** xref:14-jdk24.adoc#streamgatherers[Stream Gatherers]
+
 * xref:98-preview.adoc[Java Preview]
+** xref:98-preview.adoc#beforesuper[Flexible Constructor Bodies]
+** xref:98-preview.adoc#keyderivation[Key Derivation Function API]
 ** xref:98-preview.adoc#stringtemplate[String Template]
-** xref:98-preview#unnamedvars[Unamed Variables]
 ** xref:98-preview#structuredconcurrency[Structured Concurrency API]
 ** xref:98-preview#scoped[Scoped Values]

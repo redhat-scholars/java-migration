@@ -59,6 +59,18 @@ We'll cover API modifications to existing classes (String, Formatters, ...), new
 * xref:11-jdk21.adoc[What's New in Java 21]
 
 [.tile]
+.xref:12-jdk21.adoc[Java 22]
+* xref:12-jdk22.adoc[What's New in Java 22]
+
+[.tile]
+.xref:13-jdk21.adoc[Java 23]
+* xref:13-jdk23.adoc[What's New in Java 23]
+
+[.tile]
+.xref:14-jdk21.adoc[Java 24]
+* xref:14-jdk23.adoc[What's New in Java 24]
+
+[.tile]
 .xref:98-preview.adoc[Java Preview]
 * xref:98-preview.adoc[What's in Preview]
 
