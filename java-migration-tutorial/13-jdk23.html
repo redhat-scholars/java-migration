@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Java 17 :: Java Migration Tutorial</title>
-    <link rel="canonical" href="https://github.com/redhat-scholars/java-migration/java-migration-tutorial/07-jdk17.html">
-    <link rel="prev" href="06-jdk16.html">
-    <link rel="next" href="08-jdk18.html">
+    <title>Java 23 :: Java Migration Tutorial</title>
+    <link rel="canonical" href="https://github.com/redhat-scholars/java-migration/java-migration-tutorial/13-jdk23.html">
+    <link rel="prev" href="12-jdk22.html">
+    <link rel="next" href="14-jdk24.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -135,18 +135,18 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="07-jdk17.html">Java 17</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#sealed">Sealed Classes</a>
+    <a class="nav-link" href="07-jdk17.html#sealed">Sealed Classes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#instantsource">Instant Source</a>
+    <a class="nav-link" href="07-jdk17.html#instantsource">Instant Source</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#random">Random class</a>
+    <a class="nav-link" href="07-jdk17.html#random">Random class</a>
   </li>
 </ul>
   </li>
@@ -207,12 +207,12 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="13-jdk23.html">Java 23</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="13-jdk23.html#durationuntil">Duration Until</a>
+    <a class="nav-link" href="#durationuntil">Duration Until</a>
   </li>
 </ul>
   </li>
@@ -261,135 +261,42 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Java Migration Tutorial</a></li>
-    <li><a href="07-jdk17.html">Java 17</a></li>
+    <li><a href="13-jdk23.html">Java 23</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/java-migration/edit/master/documentation/modules/ROOT/pages/07-jdk17.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/java-migration/edit/master/documentation/modules/ROOT/pages/13-jdk23.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Java 17</h1>
+<h1 class="page">Java 23</h1>
 <div class="sect1">
-<h2 id="sealed"><a class="anchor" href="#sealed"></a>Sealed Classes</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A way to put organization domain concepts into code.</p>
-</div>
-<div class="paragraph">
-<p>With Sealed classes you define who can extend them using <code>sealed</code> to define the list of classes that can extends the current class, and <code>non-sealed</code> to permit extend any child class from a parent sealed class.</p>
-</div>
-<div class="sect2">
-<h3 id="_sealed_inheritance"><a class="anchor" href="#_sealed_inheritance"></a>Sealed inheritance</h3>
-<div class="paragraph">
-<p>Let&#8217;s create a parent abstract class named <code>Animal</code>.</p>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme;
-
-public abstract class Animal {
-
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then create the first sub-class of <code>Animal</code> named <code>Reptile</code> sealed to <code>Lizard</code> and <code>Turtle</code> which means that only <code>Lizard</code> and <code>Turtle</code> classes can extend <code>Reptile</code> class.</p>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme;
-
-public abstract sealed class Reptile permits Lizard, Turtle {
-
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>Lizard</code> class is a <code>final</code> class, there cannot be inheritance from <code>Lizard</code>:</p>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme;
-
-public final class Lizard extends Reptile {
-
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>Turtle</code> class is a none sealed class which means that it&#8217;s not closed and you can extend it with no restrictions.</p>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme;
-
-public non-sealed class Turtle extends Reptile {
-
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_inner_sealed_classes"><a class="anchor" href="#_inner_sealed_classes"></a>Inner Sealed Classes</h3>
-<div class="paragraph">
-<p>When you define an inner class and extending from the outter a sealed class, then <code>permits</code> is not necessary as it&#8217;s implecitly set.</p>
-</div>
-<div class="paragraph">
-<p>Create an <code>Amphibian</code> class containing an inner class:</p>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme;
-
-public sealed class Amphibian {
-    public final class Frog extends Amphibian {
-
-    }
-}</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instantsource"><a class="anchor" href="#instantsource"></a>Instant Source</h2>
+<h2 id="durationuntil"><a class="anchor" href="#durationuntil"></a>Duration Until</h2>
 <div class="sectionbody">
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">final InstantSource system = InstantSource.system();
-System.out.println(system.millis());</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">final Instant now = Instant.now();
+final Instant plusSeconds = now.plusSeconds(50);
+System.out.println(now.until(plusSeconds)); <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Returns a duration</td>
+</tr>
+</table>
 </div>
 <div class="listingblock console-output">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="random"><a class="anchor" href="#random"></a>Random</h2>
-<div class="sectionbody">
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">RandomGenerator randomGenerator = new Random();
-RandomGenerator randomGenerator2 = RandomGenerator.of("L128X256MixRandom");
-
-System.out.println(randomGenerator.nextInt(10));
-System.out.println(randomGenerator2.nextInt(10));</code></pre>
-</div>
-</div>
-<div class="listingblock console-output">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">3
-6</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">PT50S</code></pre>
 </div>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="06-jdk16.html">Java 16</a></span>
-  <span class="next"><a href="08-jdk18.html">Java 18</a></span>
+  <span class="prev"><a href="12-jdk22.html">Java 22</a></span>
+  <span class="next"><a href="14-jdk24.html">Java 24</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
